@@ -1,9 +1,3 @@
-const server = require('./app.server')
-const Shipping = require('./modules/shipping/router');
-const modules = require('./modules/index');
-const Router = require('./server.router');
-/* Add routes to the server here
-first parameter is the route, second parameter is the controller function of the route */
+const { Server } = require('anchor-express');
 
-const router = new Router(modules);
-server.addRoute(router.LoadRoutes());
+const server = new Server(3000);
