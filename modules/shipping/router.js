@@ -4,7 +4,12 @@ const route = [
     {
         route: '/',
         method: 'get',
-        controller: Shipping.worker
+        controller: Shipping.getworker
+    },
+    {
+        route: '/',
+        method: 'post',
+        controller: Shipping.postworker
     },
 ]
 module.exports = {

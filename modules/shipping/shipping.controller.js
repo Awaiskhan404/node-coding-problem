@@ -7,6 +7,17 @@ const readDistances = () => {
   return JSON.parse(file);
 }
 
+const writeDistances = (distances) => {
+  try {
+    const fileToWrite = 'distances/distance.json';
+    const file = fs.writeFileSync(fileToWrite, JSON.stringify(distances));
+    return `File written successfully!`;
+  }
+  catch (e) {
+    return `Error writing file: ${e}`;
+  }
+}
+
 /* enable log */
 const SHOW_DEBUG_LOG = false;
 /* Show log  */
@@ -55,7 +66,7 @@ const calculateCharges = (routeLength) => {
   return deliveryCharges;
 };
 
-const worker = (request = {}) => {
+const getworker = (request = {}) => {
   log('start of solution');
   const data = readDistances();
   const { origin_addresses: originAddresses,
@@ -176,6 +187,17 @@ const worker = (request = {}) => {
   return calculations.deliveryRoutes;
 }
 
+const postworker = (request = {}) => {
+  return ({
+    statusCode: 200,
+    body: {
+      detail: writeDistances(request.body),
+      message: 'Go Serverless v1.0! Your function executed successfully!'
+    },
+  })
+}
+
 module.exports = {
-  worker
+  getworker,
+  postworker
 }

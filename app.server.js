@@ -1,10 +1,10 @@
 const Rest = require('express')
 
 const instance = Rest()
-
+instance.use(Rest.json());
 const addRoute = (routes) => {
     routes.map((route) => {
-        route.map((_) => {
+        return route.map((_) => {
             return instance[_.method](
                 _.route,
                 (request, response) => {
