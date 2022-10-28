@@ -1,4 +1,4 @@
-const server = require('./instance.server')
+const server = require('./app.server')
 const Shipping = require('./modules/shipping/router');
 const modules = require('./modules/index');
 const Router = require('./server.router');
